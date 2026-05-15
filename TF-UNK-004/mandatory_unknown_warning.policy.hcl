@@ -3,7 +3,7 @@
 policy {}
 
 resource_policy "aws_vpc" "mandatory_flow_log_check" {
-  enforcement_level = mandatory
+  enforcement_level = "mandatory"
 
   locals {
     flow_logs = core::getresources("aws_flow_log", {
