@@ -7,7 +7,8 @@ policy {}
 provider_policy "aws" "must_use_approved_region" {
   locals {
     approved_regions = ["us-east-1", "us-west-2"]
-    region           = core::try(meta.region, "")
+    # region is a provider config attribute — available via attrs, not meta
+    region           = core::try(attrs.region, "")
   }
 
   enforce {
